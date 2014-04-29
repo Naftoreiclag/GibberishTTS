@@ -85,7 +85,7 @@ public class Main
 		{
 			if(!iDidIt)
 			{
-				String s = "HH AH L OW . W ER L D .";
+				String s = "AY . AE M . S AA R IY . D EY V . . AY . AE M . AH F R EY D . AY . K AE N T . D UW . DH AE T .";
 				s = s.toLowerCase();
 				String chunk = "";
 				for(char c : s.toCharArray())
@@ -169,7 +169,7 @@ public class Main
 		WaveData data;
 		try
 		{
-			data = WaveData.create(new BufferedInputStream(new FileInputStream("resources/gibberish/around/" + name + ".wav")));
+			data = WaveData.create(new BufferedInputStream(new FileInputStream("resources/gibberish/banana/" + name + ".wav")));
 		}
 		catch (FileNotFoundException e)
 		{
