@@ -81,7 +81,7 @@ public class Main
 		
 		boolean iDidIt = false;
 		
-		while(!Display.isCloseRequested())
+		while(!Display.isCloseRequested() && !iDidIt)
 		{
 			if(!iDidIt)
 			{
