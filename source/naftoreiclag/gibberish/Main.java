@@ -78,7 +78,7 @@ public class Main
 					playSound(c + "");
 					try
 					{
-						Thread.sleep(150);
+						Thread.sleep(200);
 					} catch (InterruptedException e)
 					{
 						// TODO Auto-generated catch block
