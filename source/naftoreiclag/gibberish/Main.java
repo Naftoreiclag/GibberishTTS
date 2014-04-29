@@ -21,6 +21,7 @@ import static org.lwjgl.openal.AL10.*;
 
 public class Main
 {
+	private static float mod = 2.0f;
 	private static Map<String, Integer> sounds = new HashMap<String, Integer>();
 
 	public static void main(String[] args) throws FileNotFoundException
@@ -97,7 +98,7 @@ public class Main
 						chunk = "";
 						try
 						{
-							Thread.sleep(200);
+							Thread.sleep((int) (200.0f / mod));
 						} catch (InterruptedException e)
 						{
 							// TODO Auto-generated catch block
@@ -180,6 +181,7 @@ public class Main
 
 		int source = alGenSources();
 		alSourcei(source, AL_BUFFER, buffer);
+		alSourcef(source, AL_PITCH, mod);
 		
 		sounds.put(name, source);
 	}
