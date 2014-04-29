@@ -39,32 +39,45 @@ public class Main
 			System.exit(0);
 		}
 		
-		loadSound("a");
+		loadSound("aa");
+		loadSound("ae");
+		loadSound("ah");
+		loadSound("ao");
+		loadSound("aw");
+		loadSound("ay");
 		loadSound("b");
-		loadSound("c");
+		loadSound("ch");
 		loadSound("d");
-		loadSound("e");
+		loadSound("dh");
+		loadSound("eh");
+		loadSound("er");
+		loadSound("ey");
 		loadSound("f");
 		loadSound("g");
-		loadSound("h");
-		loadSound("i");
-		loadSound("j");
+		loadSound("hh");
+		loadSound("ih");
+		loadSound("iy");
+		loadSound("jh");
 		loadSound("k");
 		loadSound("l");
 		loadSound("m");
 		loadSound("n");
-		loadSound("o");
+		loadSound("ng");
+		loadSound("ow");
+		loadSound("oy");
 		loadSound("p");
-		loadSound("q");
 		loadSound("r");
 		loadSound("s");
+		loadSound("sh");
 		loadSound("t");
-		loadSound("u");
+		loadSound("th");
+		loadSound("uh");
+		loadSound("uw");
 		loadSound("v");
 		loadSound("w");
-		loadSound("x");
 		loadSound("y");
 		loadSound("z");
+		loadSound("zh");
 		
 		boolean iDidIt = false;
 		
@@ -72,17 +85,29 @@ public class Main
 		{
 			if(!iDidIt)
 			{
-				String s = "naftoreiclag";
+				String s = "HH AH L OW . W ER L D .";
+				s = s.toLowerCase();
+				String chunk = "";
 				for(char c : s.toCharArray())
 				{
-					playSound(c + "");
-					try
+					if(c == ' ' || c == '.')
 					{
-						Thread.sleep(200);
-					} catch (InterruptedException e)
+						playSound(chunk);
+						System.out.println("[" + chunk + "]");
+						chunk = "";
+						try
+						{
+							Thread.sleep(200);
+						} catch (InterruptedException e)
+						{
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						continue;
+					}
+					else
 					{
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						chunk += c;
 					}
 				}
 			}
@@ -92,32 +117,45 @@ public class Main
 			Display.sync(60);
 		}
 		
-		unloadSound("a");
+		unloadSound("aa");
+		unloadSound("ae");
+		unloadSound("ah");
+		unloadSound("ao");
+		unloadSound("aw");
+		unloadSound("ay");
 		unloadSound("b");
-		unloadSound("c");
+		unloadSound("ch");
 		unloadSound("d");
-		unloadSound("e");
+		unloadSound("dh");
+		unloadSound("eh");
+		unloadSound("er");
+		unloadSound("ey");
 		unloadSound("f");
 		unloadSound("g");
-		unloadSound("h");
-		unloadSound("i");
-		unloadSound("j");
+		unloadSound("hh");
+		unloadSound("ih");
+		unloadSound("iy");
+		unloadSound("jh");
 		unloadSound("k");
 		unloadSound("l");
 		unloadSound("m");
 		unloadSound("n");
-		unloadSound("o");
+		unloadSound("ng");
+		unloadSound("ow");
+		unloadSound("oy");
 		unloadSound("p");
-		unloadSound("q");
 		unloadSound("r");
 		unloadSound("s");
+		unloadSound("sh");
 		unloadSound("t");
-		unloadSound("u");
+		unloadSound("th");
+		unloadSound("uh");
+		unloadSound("uw");
 		unloadSound("v");
 		unloadSound("w");
-		unloadSound("x");
 		unloadSound("y");
 		unloadSound("z");
+		unloadSound("zh");
 		
 		AL.destroy();
 		Display.destroy();
@@ -131,7 +169,7 @@ public class Main
 		WaveData data;
 		try
 		{
-			data = WaveData.create(new BufferedInputStream(new FileInputStream("resources/gibberish/" + name + ".wav")));
+			data = WaveData.create(new BufferedInputStream(new FileInputStream("resources/gibberish/around/" + name + ".wav")));
 		}
 		catch (FileNotFoundException e)
 		{
@@ -146,14 +184,16 @@ public class Main
 		sounds.put(name, source);
 	}
 	
-	private static void playSound(String name)
+	private static boolean playSound(String name)
 	{
 		Integer i = sounds.get(name);
 		
 		if(i != null)
 		{
 			alSourcePlay(i);
+			return true;
 		}
+		return false;
 	}
 	
 	private static void unloadSound(String name)
