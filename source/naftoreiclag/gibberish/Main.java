@@ -99,8 +99,10 @@ public class Main
 			{
 				//String s = "S AA R IY";
 				//String s = "AY . AE M . S AA R IY . D EY V . . AY . AE M . AH F R EY D . AY . K AE N T . D UW . DH AE T .";
-				String s = "AY  AE M  S AA R IY  D EY V  AY  AE M  AH F R EY D  AY  K AE N T  D UW  DH AE T ";
+				//String s = "AY  AE M  S AA R IY  D EY V  AY  AE M  AH F R EY D  AY  K AE N T  D UW  DH AE T ";
+				String s = TranslationDict.translate("Hello world my name is joe. I am happy to be alive.");
 				s = s.toLowerCase();
+				System.out.println("ITIS:" + s + "]");
 				String chunk = "";
 				for(char c : s.toCharArray())
 				{

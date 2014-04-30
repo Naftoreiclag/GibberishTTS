@@ -72,6 +72,40 @@ public class TranslationDict
 		br.close();
 	}
 	
+	public static String translate(String a)
+	{
+		StringBuilder builder = new StringBuilder();
+		a += " ";
+		char[] chars = a.toLowerCase().toCharArray();
+		String currentBuild = "";
+		for(char c : chars)
+		{
+			if(c == '.' || c == ' ')
+			{
+				if(data.containsKey(currentBuild))
+				{
+					builder.append(data.get(currentBuild));
+				}
+				builder.append(" . ");
+				currentBuild = "";
+				continue;
+			}
+			else
+			{
+				currentBuild += c;
+			}
+			/*
+			if(data.containsKey(currentBuild))
+			{
+				builder.append(data.get(currentBuild));
+				currentBuild = "";
+				continue;
+			}*/
+		}
+		
+		return builder.toString();
+	}
+	
 	public static String noNums(String a)
 	{
 		return a.replaceAll("0", "").replaceAll("1", "").replaceAll("2", "").replaceAll("3", "").replaceAll("4", "").replaceAll("5", "").replaceAll("6", "").replaceAll("7", "").replaceAll("8", "").replaceAll("9", "");
