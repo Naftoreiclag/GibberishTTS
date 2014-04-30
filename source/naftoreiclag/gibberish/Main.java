@@ -24,20 +24,11 @@ import static org.lwjgl.openal.AL10.*;
 
 public class Main
 {
-	private static float mod = 3.0f;
+	private static float mod = 2.0f;
 	private static Map<String, Integer> sounds = new HashMap<String, Integer>();
 
 	public static void main(String[] args) throws FileNotFoundException
 	{
-		try
-		{
-			TranslationDict.load();
-		} catch (IOException e1)
-		{
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			System.exit(1);
-		}
 		
 		try
 		{
@@ -53,6 +44,7 @@ public class Main
 			System.exit(0);
 		}
 		
+		/*
 		loadSound("aa");
 		loadSound("ae");
 		loadSound("ah");
@@ -92,16 +84,52 @@ public class Main
 		loadSound("y");
 		loadSound("z");
 		loadSound("zh");
+		*/
+		
+		loadSound("a");
+		loadSound("b");
+		loadSound("c");
+		loadSound("d");
+		loadSound("e");
+		loadSound("f");
+		loadSound("g");
+		loadSound("h");
+		loadSound("i");
+		loadSound("j");
+		loadSound("k");
+		loadSound("l");
+		loadSound("m");
+		loadSound("n");
+		loadSound("o");
+		loadSound("p");
+		loadSound("q");
+		loadSound("r");
+		loadSound("s");
+		loadSound("t");
+		loadSound("u");
+		loadSound("v");
+		loadSound("w");
+		loadSound("x");
+		loadSound("y");
+		loadSound("z");
+
 		
 		boolean iDidIt = false;
 		
 		while(!Display.isCloseRequested() && !iDidIt)
 		{
+			/*
 			if(!iDidIt)
 			{
-				//String s = "S AA R IY";
-				//String s = "AY . AE M . S AA R IY . D EY V . . AY . AE M . AH F R EY D . AY . K AE N T . D UW . DH AE T .";
-				//String s = "AY  AE M  S AA R IY  D EY V  AY  AE M  AH F R EY D  AY  K AE N T  D UW  DH AE T ";
+				try
+				{
+					TranslationDict.load();
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+					System.exit(1);
+				}
 				String s1 = "";
 				try
 				{
@@ -139,12 +167,70 @@ public class Main
 					}
 				}
 			}
+			*/
+			if(!iDidIt)
+			{
+				String s1 = "";
+				try
+				{
+					s1 = test();
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+					System.exit(0);
+				}
+				System.out.println(s1);
+				s1 = s1.toLowerCase();
+				
+				for(char c : s1.toCharArray())
+				{
+					System.out.println(c);
+					playSound(c + "");
+					try
+					{
+						Thread.sleep((int) (350.0f / mod));
+					} catch (InterruptedException e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
 			iDidIt = true;
 			
 			Display.update();
 			Display.sync(60);
 		}
 		
+		unloadSound("a");
+		unloadSound("b");
+		unloadSound("c");
+		unloadSound("d");
+		unloadSound("e");
+		unloadSound("f");
+		unloadSound("g");
+		unloadSound("h");
+		unloadSound("i");
+		unloadSound("j");
+		unloadSound("k");
+		unloadSound("l");
+		unloadSound("m");
+		unloadSound("n");
+		unloadSound("o");
+		unloadSound("p");
+		unloadSound("q");
+		unloadSound("r");
+		unloadSound("s");
+		unloadSound("t");
+		unloadSound("u");
+		unloadSound("v");
+		unloadSound("w");
+		unloadSound("x");
+		unloadSound("y");
+		unloadSound("z");
+
+		/*
 		unloadSound("aa");
 		unloadSound("ae");
 		unloadSound("ah");
@@ -184,6 +270,7 @@ public class Main
 		unloadSound("y");
 		unloadSound("z");
 		unloadSound("zh");
+		*/
 		
 		AL.destroy();
 		Display.destroy();
@@ -210,7 +297,7 @@ public class Main
 		WaveData data;
 		try
 		{
-			data = WaveData.create(new BufferedInputStream(new FileInputStream("resources/gibberish/banana/" + name + ".wav")));
+			data = WaveData.create(new BufferedInputStream(new FileInputStream("resources/gibberish/carrot/" + name + ".wav")));
 		}
 		catch (FileNotFoundException e)
 		{
