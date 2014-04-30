@@ -14,6 +14,7 @@ import org.lwjgl.util.WaveData;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,11 +22,21 @@ import static org.lwjgl.openal.AL10.*;
 
 public class Main
 {
-	private static float mod = 2.0f;
+	private static float mod = 1.0f;
 	private static Map<String, Integer> sounds = new HashMap<String, Integer>();
 
 	public static void main(String[] args) throws FileNotFoundException
 	{
+		try
+		{
+			TranslationDict.load();
+		} catch (IOException e1)
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			System.exit(1);
+		}
+		
 		try
 		{
 			Display.setDisplayMode(new DisplayMode(100, 100));
@@ -86,7 +97,9 @@ public class Main
 		{
 			if(!iDidIt)
 			{
-				String s = "AY . AE M . S AA R IY . D EY V . . AY . AE M . AH F R EY D . AY . K AE N T . D UW . DH AE T .";
+				//String s = "S AA R IY";
+				//String s = "AY . AE M . S AA R IY . D EY V . . AY . AE M . AH F R EY D . AY . K AE N T . D UW . DH AE T .";
+				String s = "AY  AE M  S AA R IY  D EY V  AY  AE M  AH F R EY D  AY  K AE N T  D UW  DH AE T ";
 				s = s.toLowerCase();
 				String chunk = "";
 				for(char c : s.toCharArray())
