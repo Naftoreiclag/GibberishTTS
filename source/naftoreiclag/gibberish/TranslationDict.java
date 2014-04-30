@@ -66,7 +66,7 @@ public class TranslationDict
 			
 			data.put(word, trans);
 			
-			System.out.println(word + ":" + trans);
+			// System.out.println(word + ":" + trans);
 		}
 		
 		br.close();

@@ -8,3 +8,4 @@ source/tests/*.*
 donotinclude/*.*
 /bin
 /binaries
+example.txt

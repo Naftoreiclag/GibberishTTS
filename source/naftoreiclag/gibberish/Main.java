@@ -12,8 +12,10 @@ import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.util.WaveData;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +24,7 @@ import static org.lwjgl.openal.AL10.*;
 
 public class Main
 {
-	private static float mod = 1.0f;
+	private static float mod = 3.0f;
 	private static Map<String, Integer> sounds = new HashMap<String, Integer>();
 
 	public static void main(String[] args) throws FileNotFoundException
@@ -100,7 +102,17 @@ public class Main
 				//String s = "S AA R IY";
 				//String s = "AY . AE M . S AA R IY . D EY V . . AY . AE M . AH F R EY D . AY . K AE N T . D UW . DH AE T .";
 				//String s = "AY  AE M  S AA R IY  D EY V  AY  AE M  AH F R EY D  AY  K AE N T  D UW  DH AE T ";
-				String s = TranslationDict.translate("Hello world my name is joe. I am happy to be alive.");
+				String s1 = "";
+				try
+				{
+					s1 = test();
+				} catch (IOException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+					System.exit(0);
+				}
+				String s = TranslationDict.translate(s1);
 				s = s.toLowerCase();
 				System.out.println("ITIS:" + s + "]");
 				String chunk = "";
@@ -176,6 +188,19 @@ public class Main
 		AL.destroy();
 		Display.destroy();
 		System.exit(0);
+	}
+	
+	protected static String test() throws IOException
+	{
+		BufferedReader br = new BufferedReader(new FileReader("example.txt"));
+		StringBuilder outPut = new StringBuilder();
+		String line;
+		while((line = br.readLine()) != null)
+		{
+			outPut.append(line + " ");
+		}
+		br.close();
+		return outPut.toString();
 	}
 	
 	private static void loadSound(String name)
