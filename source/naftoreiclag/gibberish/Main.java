@@ -24,7 +24,7 @@ import static org.lwjgl.openal.AL10.*;
 
 public class Main
 {
-	private static float mod = 1.5f;
+	private static float mod = 1.0f;
 	private static Map<String, Integer> sounds = new HashMap<String, Integer>();
 	public static String loadDir = "banana";
 
